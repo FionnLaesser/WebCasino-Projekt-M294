@@ -83,7 +83,7 @@ export async function deleteDemoUser() {
 }
 
 /* ============================================================
-   CONFIG
+   GAME CONFIG (allgemein)
 ============================================================ */
 
 export async function getGameConfig() {
@@ -110,5 +110,60 @@ export async function updateGameConfig(cfg) {
     gameCost: cfg.gameCost,
     winChance: cfg.winChance,
     winMultiplier: cfg.winMultiplier
+  });
+}
+
+/* ============================================================
+   SLOT CONFIG (fuer SlotPage / AdminSlot)
+============================================================ */
+
+export async function getSlotConfig() {
+  const raw = await getDocByType("slotConfig");
+  return raw ? mapDoc(raw) : null;
+}
+
+// optional, falls du bei Serverstart eine Default-Config anlegen willst
+export async function createDefaultSlotConfig() {
+  return post({
+    type: "slotConfig",
+    reels: 5,
+    rows: 3,
+    paylines: 5,
+    baseBets: [0.05, 0.10, 0.20, 0.30, 0.50],
+    symbolWeights: {
+      watermelon: 8,
+      plum: 9,
+      cherry: 10,
+      orange: 10,
+      grapes: 7,
+      lemon: 11,
+      bell: 4,
+      crown: 2,
+      seven: 1
+    },
+    freeSpins: {
+      enabled: true,
+      triggerSymbol: "crown",
+      triggerCount: 3,
+      spins: 10,
+      multiplier: 2
+    },
+    bigWinMultipliers: {
+      big: 15,
+      mega: 30,
+      ultra: 60
+    }
+  });
+}
+
+// UPDATE SLOT CONFIG = DELETE + POST
+export async function updateSlotConfig(cfg) {
+  const raw = await getDocByType("slotConfig");
+  if (raw) await del(getDocId(raw));
+
+  // cfg kommt direkt aus AdminSlot.jsx (enthält reels, rows, usw.)
+  return post({
+    type: "slotConfig",
+    ...cfg
   });
 }

@@ -92,3 +92,158 @@ button:disabled {
   align-items: center;
   flex-wrap: wrap;
 }
+
+/* Roulette */
+
+.roulette {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.roulette-wheel {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 6px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.roulette-inner {
+  border-radius: 50%;
+}
+
+.spin {
+  animation: spin 0.7s linear;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(720deg); }
+}
+
+.result {
+  font-weight: 600;
+}
+
+.result.win {
+  color: #27ae60;
+}
+
+.result.lose {
+  color: #c0392b;
+}
+/* ============================
+   Roulette Tisch Layout
+============================ */
+
+.roulette-layout {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch;
+  margin-top: 1rem;
+}
+
+.roulette-zero {
+  display: flex;
+  align-items: center;
+}
+
+.roulette-zero-field {
+  width: 60px;
+  height: 180px;
+  border-radius: 0.75rem;
+  border: 2px solid #222;
+  background: #27ae60;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.roulette-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.roulette-row {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0.25rem;
+}
+
+.roulette-field {
+  min-width: 40px;
+  height: 40px;
+  border-radius: 0.5rem;
+  border: 2px solid #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  cursor: pointer;
+  color: #fff;
+}
+
+.roulette-field.red {
+  background: #c0392b;
+}
+
+.roulette-field.black {
+  background: #222;
+}
+
+.roulette-field.green {
+  background: #27ae60;
+}
+
+.roulette-field.selected,
+.roulette-zero-field.selected {
+  box-shadow: 0 0 0 3px #f1c40f;
+  transform: translateY(-2px);
+}
+
+.roulette-selection-info {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.roulette-selection-info button {
+  padding: 0.4rem 0.8rem;
+}
+
+.roulette-play-area {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.rolled-number {
+  font-weight: 600;
+}
+
+.rolled-number .red {
+  color: #c0392b;
+}
+
+.rolled-number .black {
+  color: #222;
+}
+
+.rolled-number .green {
+  color: #27ae60;
+}
