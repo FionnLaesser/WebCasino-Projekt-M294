@@ -20,11 +20,11 @@ describe('GamePage', () => {
   })
 
   afterEach(() => {
-    vi.useRealTimers()
     vi.restoreAllMocks()
+    vi.useRealTimers()
   })
 
-  it('zeigt zuerst Laden und rendert danach Spieler und Spielregeln', async () => {
+  it('zeigt zuerst Laden und danach Spielerkarte und Spielregeln', async () => {
     getCurrentUser.mockResolvedValue({
       id: 'u1',
       name: 'Testspieler',
@@ -38,29 +38,42 @@ describe('GamePage', () => {
 
     render(<GamePage />)
 
-    // Zuerst: Ladeanzeige
-    expect(screen.getByText(/Daten werden geladen/i)).toBeInTheDocument()
+    // Ladeanzeige
+    expect(
+      screen.getByText(/Daten werden geladen/i)
+    ).toBeInTheDocument()
 
-    // Nach dem Laden: Spielerkarte und Regeln
+    // Danach Inhalte
     await waitFor(() => {
       expect(screen.getByText('Spieler')).toBeInTheDocument()
     })
+
     expect(
       screen.getByText('Kosten pro Spiel: 10 CHF')
     ).toBeInTheDocument()
     expect(
       screen.getByText(/Gewinnchance:/i)
     ).toBeInTheDocument()
+    expect(
+      screen.getByText(/Gewinnfaktor: x3/)
+    ).toBeInTheDocument()
   })
 
-  it('deaktiviert den Button, wenn kein User oder keine Config geladen ist', async () => {
+  it('zeigt Hinweis, wenn kein User oder keine Config vorhanden ist', async () => {
     getCurrentUser.mockResolvedValue(null)
     getGameConfig.mockResolvedValue(null)
 
     render(<GamePage />)
 
-    const button = await screen.findByRole('button', { name: /spielen/i })
-    expect(button).toBeDisabled()
+    // Hinweistext vorhanden
+    expect(
+      await screen.findByText(/Fehlende Spieldaten\./i)
+    ).toBeInTheDocument()
+
+    // Kein Spielen-Button vorhanden
+    expect(
+      screen.queryByRole('button', { name: /spielen/i })
+    ).not.toBeInTheDocument()
   })
 
   it('zeigt Fehlermeldung, wenn Kontostand kleiner als Spielkosten ist', async () => {
@@ -81,9 +94,12 @@ describe('GamePage', () => {
     const user = userEvent.setup()
     await user.click(button)
 
+    // Kein API-Update
     expect(updateUserBalance).not.toHaveBeenCalled()
+
+    // Fehlermeldung (wartet auf Render)
     expect(
-      screen.getByText(/Nicht genug Geld fuer dieses Spiel\./i)
+      await screen.findByText(/Nicht genug Geld für dieses Spiel\./i)
     ).toBeInTheDocument()
   })
 
@@ -102,7 +118,6 @@ describe('GamePage', () => {
       winMultiplier: 2
     })
 
-    // neuer Kontostand = 100 - 10 = 90
     updateUserBalance.mockResolvedValue({
       id: 'u1',
       name: 'Verlierer',
@@ -138,8 +153,6 @@ describe('GamePage', () => {
       winMultiplier: 3
     })
 
-    // winAmount = 10 * 3 = 30
-    // neuer Kontostand = 100 - 10 + 30 = 120
     updateUserBalance.mockResolvedValue({
       id: 'u1',
       name: 'Gewinner',

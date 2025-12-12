@@ -1,0 +1,359 @@
+/* src/styles/RoulettePage.css */
+
+.roulette-page {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #005a8a 0%, #020712 55%, #000208 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.roulette-page .error {
+  margin: 0 0 10px 0;
+  text-align: center;
+  color: #ff8f8f;
+}
+
+/* HEADER */
+
+.roulette-header {
+  max-width: 1100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.roulette-header h1 {
+  margin: 0;
+  font-size: 26px;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+
+.roulette-info-box {
+  background: #02050a;
+  border-radius: 10px;
+  padding: 6px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 2px solid #4bd1ff;
+  min-width: 160px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+}
+
+.roulette-label {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+  text-transform: uppercase;
+}
+
+.roulette-value {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* MAIN */
+
+.roulette-main {
+  max-width: 1100px;
+  width: 100%;
+}
+
+/* CONTROLS OBERHALB DES FELDES */
+
+.roulette-controls {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+  margin-bottom: 14px;
+}
+
+.roulette-bet-per-click {
+  background: linear-gradient(180deg, #031521 0%, #020812 100%);
+  border-radius: 10px;
+  border: 1px solid #1b394d;
+  padding: 10px 12px;
+  min-width: 220px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+}
+
+.roulette-bet-per-click label {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.roulette-bet-per-click input {
+  width: 80px;
+  padding: 3px 6px;
+  border-radius: 6px;
+  border: 1px solid #4bd1ff;
+  background: #050a12;
+  color: #fff;
+  font-size: 13px;
+}
+
+.roulette-bet-per-click span {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.roulette-summary {
+  flex: 1;
+  background: linear-gradient(180deg, #031521 0%, #020812 100%);
+  border-radius: 10px;
+  border: 1px solid #1b394d;
+  padding: 10px 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  font-size: 13px;
+}
+
+.roulette-last-result {
+  margin-top: 2px;
+  font-size: 13px;
+}
+
+.roulette-num {
+  display: inline-block;
+  min-width: 22px;
+  text-align: center;
+  padding: 0 4px;
+  border-radius: 4px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.roulette-num.red {
+  background: #b71c1c;
+}
+
+.roulette-num.black {
+  background: #111;
+}
+
+.roulette-num.green {
+  background: #2e7d32;
+}
+
+.roulette-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  justify-content: center;
+}
+
+.roulette-spin-btn,
+.roulette-clear-btn {
+  border-radius: 999px;
+  border: none;
+  padding: 8px 18px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.roulette-spin-btn {
+  background: radial-gradient(circle at 30% 30%, #a2ff7a 0%, #0f7a1f 50%, #042f0b 100%);
+  box-shadow:
+    0 0 10px rgba(0, 0, 0, 0.9),
+    0 0 16px rgba(132, 255, 132, 0.9);
+  color: #041106;
+  font-weight: 800;
+}
+
+.roulette-spin-btn:disabled {
+  opacity: 0.7;
+  cursor: default;
+  box-shadow:
+    0 0 6px rgba(0, 0, 0, 0.7),
+    0 0 10px rgba(132, 255, 132, 0.5);
+}
+
+.roulette-clear-btn {
+  background: #101827;
+  color: #e5e7eb;
+  border: 1px solid #4b5563;
+}
+
+.roulette-clear-btn:hover:not(:disabled) {
+  background: #1f2937;
+}
+
+/* ROULETTE-TISCH */
+
+.roulette-table {
+  background: radial-gradient(circle at top, #003547 0%, #03101c 60%);
+  border-radius: 14px;
+  border: 3px solid #0d2735;
+  padding: 12px 12px 16px;
+  box-shadow:
+    0 0 16px rgba(0, 0, 0, 0.9),
+    0 0 26px rgba(0, 145, 178, 0.7);
+}
+
+/* 0-Feld */
+
+.roulette-zero-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+/* Zellen Allgemein */
+
+.roulette-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.roulette-row {
+  display: flex;
+  gap: 4px;
+}
+
+.roulette-cell {
+  position: relative;
+  min-width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  border: 2px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 16px;
+  transition:
+    transform 0.08s ease-out,
+    box-shadow 0.08s ease-out,
+    filter 0.08s ease-out;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+
+/* Farben der Zahlen */
+
+.roulette-cell.red {
+  background: radial-gradient(circle at 30% 30%, #ff6659 0%, #b71c1c 55%, #5d0202 100%);
+}
+
+.roulette-cell.black {
+  background: radial-gradient(circle at 30% 30%, #4b5563 0%, #111827 55%, #020617 100%);
+}
+
+.roulette-cell.zero {
+  background: radial-gradient(circle at 30% 30%, #66bb6a 0%, #2e7d32 55%, #0b3b13 100%);
+  min-width: 80px;
+}
+
+.roulette-cell:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 14px rgba(0, 188, 212, 0.8);
+  filter: brightness(1.05);
+}
+
+.roulette-cell:disabled {
+  cursor: default;
+  opacity: 0.8;
+}
+
+/* Einsatz-Chip Anzeige */
+
+.roulette-num-text {
+  z-index: 1;
+}
+
+.roulette-chip {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  min-width: 30px;
+  padding: 1px 4px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, #ffd54f 0%, #ffb300 60%, #ff6f00 100%);
+  color: #3a1b00;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  box-shadow:
+    0 0 6px rgba(0, 0, 0, 0.9),
+    0 0 10px rgba(255, 241, 175, 0.9);
+}
+
+.roulette-cell.has-bet {
+  box-shadow:
+    0 0 10px rgba(255, 215, 0, 0.9),
+    0 0 18px rgba(255, 245, 157, 0.9);
+}
+
+/* MESSAGE */
+
+.roulette-message {
+  margin-top: 10px;
+  text-align: center;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  font-size: 13px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1024px) {
+  .roulette-header {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  .roulette-header h1 {
+    text-align: center;
+  }
+
+  .roulette-controls {
+    flex-direction: column;
+  }
+
+  .roulette-buttons {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .roulette-table {
+    padding: 10px;
+  }
+
+  .roulette-cell {
+    min-width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .roulette-cell.zero {
+    min-width: 70px;
+  }
+
+  .roulette-chip {
+    font-size: 10px;
+  }
+}

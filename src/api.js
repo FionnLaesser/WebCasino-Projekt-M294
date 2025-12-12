@@ -44,8 +44,10 @@ function mapDoc(doc) {
 
 async function getDocByType(type) {
   const docs = await getAllRaw();
-  return docs.find((d) => d.content?.type === type) || null;
+  const matches = docs.filter(d => d.content?.type === type);
+  return matches.length ? matches[matches.length - 1] : null; // letzten (= neuesten) nehmen
 }
+
 
 /* ============================================================
    USER
@@ -114,7 +116,7 @@ export async function updateGameConfig(cfg) {
 }
 
 /* ============================================================
-   SLOT CONFIG (fuer SlotPage / AdminSlot)
+   SLOT CONFIG (für SlotPage / AdminSlot)
 ============================================================ */
 
 export async function getSlotConfig() {
@@ -156,7 +158,7 @@ export async function createDefaultSlotConfig() {
   });
 }
 
-// UPDATE SLOT CONFIG = DELETE + POST
+// UPDATE SLOT CONFIG = DELETE + POST (PUT wird nicht unterstützt)
 export async function updateSlotConfig(cfg) {
   const raw = await getDocByType("slotConfig");
   if (raw) await del(getDocId(raw));

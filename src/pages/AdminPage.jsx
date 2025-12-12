@@ -8,7 +8,6 @@ import {
   deleteDemoUser,
   createDefaultConfig
 } from '../api.js'
-
 export default function AdminPage() {
   const [user, setUser] = useState(null)
   const [config, setConfig] = useState(null)
@@ -55,16 +54,16 @@ export default function AdminPage() {
     const winMultiplier = Number(form.winMultiplier)
 
     if ([balance, gameCost, winChance, winMultiplier].some(n => isNaN(n))) {
-      return 'Alle Felder muessen Zahlen sein.'
+      return 'Alle Felder müssen Zahlen sein.'
     }
     if (balance < 0 || gameCost <= 0) {
-      return 'Balance darf nicht negativ sein und Kosten muessen > 0 sein.'
+      return 'Balance darf nicht negativ sein und Kosten müssen > 0 sein.'
     }
     if (winChance <= 0 || winChance >= 1) {
       return 'Gewinnchance muss zwischen 0 und 1 liegen (z.B. 0.5).'
     }
     if (winMultiplier <= 1) {
-      return 'Gewinnfaktor muss groesser als 1 sein.'
+      return 'Gewinnfaktor muss grösser als 1 sein.'
     }
     return ''
   }
@@ -135,7 +134,7 @@ export default function AdminPage() {
     try {
       await deleteDemoUser()
       setUser(null)
-      setInfo('Demo User geloescht.')
+      setInfo('Demo User gelöscht.')
     } catch (err) {
       setError(err.message)
     }
@@ -157,7 +156,8 @@ export default function AdminPage() {
           <form onSubmit={handleSave} className="form">
             <div className="form-row">
               <label>Spieler:</label>
-              <input type="text" value={user.name} disabled />
+              <input type="text" value={user.name} disabled className="readonly-input"/>
+              
             </div>
             <div className="form-row">
               <label>Kontostand (CHF):</label>
@@ -202,7 +202,7 @@ export default function AdminPage() {
             <div className="inline-buttons">
               <button type="submit">Speichern</button>
               <button type="button" onClick={handleDeleteUser}>
-                Demo User loeschen
+                Demo User löschen
               </button>
             </div>
           </form>
