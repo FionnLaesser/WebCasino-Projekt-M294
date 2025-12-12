@@ -1,9 +1,9 @@
 // src/pages/SlotPaytable.jsx
 import { Link } from 'react-router-dom'
-import { SYMBOLS, PAYLINES } from '../slotConfig.js'
+import { SYMBOLS, PAYLINES } from '../config/slot.config.js'
 import '../styles/SlotPage.css'
 
-export default function SlotPaytable() {
+export default function SlotPaytablePage() {
   return (
     <div className="slot-page slot-paytable-page">
       <div className="slot-paytable-card">

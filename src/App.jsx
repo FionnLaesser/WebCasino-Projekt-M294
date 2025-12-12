@@ -5,8 +5,8 @@ import GamePage from './pages/GamePage.jsx'
 import AdminPage from './pages/AdminPage.jsx'
 import RoulettePage from './pages/RoulettePage.jsx'
 import SlotPage from './pages/SlotPage.jsx'
-import SlotPaytable from './pages/SlotPaytable.jsx'
-import Home from './pages/Home.jsx'
+import SlotPaytablePage from './pages/SlotPaytablePage.jsx'
+import HomePage from './pages/HomePage.jsx'
 
 export default function App() {
   const [showFullscreenWarning, setShowFullscreenWarning] = useState(false);
@@ -54,12 +54,12 @@ export default function App() {
 
         <main className="app-main">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/admin-slot" element={<GamePage />} />
             <Route path="/roulette" element={<RoulettePage />} />
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/slot" element={<SlotPage />} />
-            <Route path="/slot/paytable" element={<SlotPaytable />} />
+            <Route path="/slot/paytable" element={<SlotPaytablePage />} />
           </Routes>
         </main>
       </div>

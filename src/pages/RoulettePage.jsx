@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getCurrentUser, getGameConfig, updateUserBalance } from '../api.js'
+import { getCurrentUser, getGameConfig, updateUserBalance } from '../api/apiClient.js'
 import '../styles/RoulettePage.css'
 
 // Geld-Helfer

@@ -6,9 +6,9 @@ import {
   getGameConfig,
   updateUserBalance,
   getSlotConfig
-} from '../api.js'
+} from '../api/apiClient.js'
 import '../styles/SlotPage.css'
-import { SYMBOLS, PAYLINES, DEFAULT_SLOT_CONFIG } from '../slotConfig.js'
+import { SYMBOLS, PAYLINES, DEFAULT_SLOT_CONFIG } from '../config/slot.config.js'
 
 // ---------- Geld-Helfer ----------
 

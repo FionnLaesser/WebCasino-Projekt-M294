@@ -7,7 +7,7 @@ import {
   createDemoUser,
   deleteDemoUser,
   createDefaultConfig
-} from '../api.js'
+} from '../api/apiClient.js'
 export default function AdminPage() {
   const [user, setUser] = useState(null)
   const [config, setConfig] = useState(null)

@@ -1,10 +1,10 @@
-import rouletteImg from '../assets/home-roulette.png'
-import slotImg from '../assets/home-slot.png'
-import paytableImg from '../assets/home-paytable.png'
-import adminSlotImg from '../assets/home-admin-slot.png'
-import adminImg from '../assets/home-admin.png'
+import rouletteImg from '../assets/images/home/home-roulette-preview.png'
+import slotImg from '../assets/images/home/home-slot-preview.png'
+import paytableImg from '../assets/images/home/home-paytable-preview.png'
+import adminSlotImg from '../assets/images/home/home-admin-slot-preview.png'
+import adminImg from '../assets/images/home/home-admin-preview.png'
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div className="page">
 

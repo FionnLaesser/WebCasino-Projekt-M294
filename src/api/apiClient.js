@@ -163,7 +163,7 @@ export async function updateSlotConfig(cfg) {
   const raw = await getDocByType("slotConfig");
   if (raw) await del(getDocId(raw));
 
-  // cfg kommt direkt aus AdminSlot.jsx (enthält reels, rows, usw.)
+  // cfg kommt direkt aus AdminSlotsPage.jsx (enthält reels, rows, usw.)
   return post({
     type: "slotConfig",
     ...cfg

@@ -5,13 +5,13 @@ import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom/vitest'
 
 // API-Funktionen mocken
-vi.mock('../src/api.js', () => ({
+vi.mock('../src/api/apiClient.js', () => ({
   getCurrentUser: vi.fn(),
   getGameConfig: vi.fn(),
   updateUserBalance: vi.fn()
 }))
 
-import { getCurrentUser, getGameConfig, updateUserBalance } from '../src/api.js'
+import { getCurrentUser, getGameConfig, updateUserBalance } from '../src/api/apiClient.js'
 import GamePage from '../src/pages/GamePage.jsx'
 
 describe('GamePage', () => {

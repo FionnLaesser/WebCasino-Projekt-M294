@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
-import { getCurrentUser, getGameConfig, updateUserBalance } from '../api.js'
+import { getCurrentUser, getGameConfig, updateUserBalance } from '../api/apiClient.js'
 import UserInfo from '../components/UserInfo.jsx'
 import RouletteWheel from '../components/RouletteWheel.jsx'
 

@@ -1,10 +1,10 @@
 // src/pages/AdminSlot.jsx
 import { useEffect, useState } from 'react'
-import { getSlotConfig, updateSlotConfig } from '../api.js'
+import { getSlotConfig, updateSlotConfig } from '../api/apiClient.js'
 import '../styles/SlotPage.css'
-import { SYMBOLS } from '../slotConfig.js'
+import { SYMBOLS } from '../config/slot.config.js'
 
-export default function AdminSlot() {
+export default function AdminSlotsPage() {
   const [config, setConfig] = useState(null)
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
