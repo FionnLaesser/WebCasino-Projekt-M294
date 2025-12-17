@@ -108,8 +108,8 @@ Bevor Sie das Frontend starten, müssen Sie das Backend aus dem folgenden Reposi
 1. **Backend-Repository klonen:**
 
 ```sh
-git clone https://github.com/WISS-GB/M294-MongoDB-API
-cd M294-MongoDB-API
+git clone https://github.com/FionnLaesser/Casino-Webapp-Backend-API
+cd Casino-Webapp-Backend-API
 ```
 
 2. **Backend starten (Docker Compose):**
